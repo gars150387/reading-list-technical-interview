@@ -4,6 +4,7 @@ import './style.css';
 import booksData from './books.json';
 import SliderFormat from './component/SliderFormat';
 import Selecting from './component/Selecting';
+import CardFormat from './component/CardFormat';
 export default function App() {
   const substractGender = useCallback(() => {
     const objCheck = {};
@@ -14,7 +15,7 @@ export default function App() {
     }
     return Object.keys(objCheck);
   }, []);
-  substractGender();
+  substractGender()
   const substractPages = useCallback(() => {
     const objCheck = {};
     for (let data of booksData.library) {
@@ -30,13 +31,13 @@ export default function App() {
       <Grid item={8}>
         <Grid item xs={12}>
           <Grid item xs={6}><SliderFormat /></Grid>
-          <Grid item xs={6}><Selecting /></Grid>
+          <Grid item xs={6}><Selecting options={substractGender()} /></Grid>
         </Grid>
-        {booksData.library.map((item) => {
-          console.log(item.book)
+        <Grid item xs={12} sm={6} md={4} lg={3}>{booksData.library.map((item) => {
+          return <CardFormat key={item.book.IBSN} props={item.book} />
         })}
-      </Grid>
-      <Grid item sx={4}></Grid>
+      </Grid></Grid>
+      <Grid item xs={4}></Grid>
     </Grid>
   );
 }
