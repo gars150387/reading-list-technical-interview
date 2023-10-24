@@ -26,6 +26,13 @@ export default function App() {
     return Object.keys(objCheck);
   }, []);
   substractPages();
+
+  //render base on gender || pages but all by default
+
+
+  //select book and place it on the side
+
+  
   return (
     <Grid container>
       <Grid item={8}>
