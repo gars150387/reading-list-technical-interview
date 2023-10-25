@@ -84,7 +84,7 @@ export default function App() {
             <Grid item xs={6}><Selecting handleChange={handleChange} options={substractGender()} /></Grid>
           </Grid>
           <Grid item xs={12} sm={12} > {renderBooksBaseOnParameters().map((item) => {
-            return <Space align="center" size={[16, 8]} wrap><CardFormat key={item.IBSN} props={item} handleCardSelected={handleCardSelected} /></Space>
+            return <Space align="center" size={[16, 8]} wrap><CardFormat selectedBooks={selectedBooks} key={item.IBSN} props={item} handleCardSelected={handleCardSelected} /></Space>
           })}
           </Grid>
         </Grid>
