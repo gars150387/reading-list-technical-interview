@@ -1,11 +1,11 @@
 import React from 'react';
 import { Card } from 'antd';
 import { Grid } from '@mui/material';
-const CardFormat = ({ props, handleCardSelected }) => {
+const CardSelected = ({ props, handleDeleteCard }) => {
     return (
         <Grid item xs={12} sm={12} md={4} lg={3}>
             <div
-                onClick={() => handleCardSelected(props)}
+                onClick={() => handleDeleteCard(props)}
                 hoverable>
                 <img style={{
                     width: 150,
@@ -16,4 +16,5 @@ const CardFormat = ({ props, handleCardSelected }) => {
         </Grid>
     )
 };
-export default CardFormat;
+
+export default CardSelected

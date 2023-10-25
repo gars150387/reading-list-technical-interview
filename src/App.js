@@ -5,6 +5,7 @@ import booksData from './books.json';
 import SliderFormat from './component/SliderFormat';
 import Selecting from './component/Selecting';
 import CardFormat from './component/CardFormat';
+import CardSelected from './component/CardSelected';
 import { Space } from 'antd';
 export default function App() {
   const [gender, setGender] = useState("Todos")
@@ -60,12 +61,16 @@ export default function App() {
     if (props) {
       if (!selectedBooks[props.title]) {
         setSelectedBooks([...selectedBooks, {
-          [props.title]: props
+          ...props
         }])
       }
     }
   }
 
+  const handleDeleteCard = (props) => {
+    const newResult = selectedBooks.filter(element => element.title !== props.title)
+    setSelectedBooks(newResult)
+  }
   return (
     <Grid container>
       <Grid display={'flex'} item xs={12} sm={12}>
@@ -79,8 +84,8 @@ export default function App() {
           })}
           </Grid>
         </Grid>
-        <Grid item xs={5} sm={5}>{selectedBooks.map((book,) => {
-          return <Space align="center" size={[16, 8]} wrap><CardFormat props={Object.values(book)[0]} handleCardSelected={handleCardSelected} /> </Space>
+        <Grid item xs={5} sm={5}>{selectedBooks.map((book) => {
+          return <Space align="center" size={[16, 8]} wrap><CardSelected props={book} handleDeleteCard={handleDeleteCard} /> </Space>
         })}
         </Grid>
       </Grid>
