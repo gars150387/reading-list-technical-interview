@@ -92,8 +92,8 @@ export default function App() {
           })}
           </Grid>
         </Grid>
-        <Grid display={'flex'} alignItems={'center'} justifyContent={'flex-start'} item xs={5} sm={5}>{selectedBooks.map((book) => {
-          return <Space align="center" size={[16, 8]} wrap><CardSelected props={book} handleDeleteCard={handleDeleteCard} /> </Space>
+        <Grid item xs={5} sm={5}>{selectedBooks.map((book) => {
+          return <Space align="center" size={[8,16]} wrap><CardSelected props={book} handleDeleteCard={handleDeleteCard} /> </Space>
         })}
         </Grid>
       </Grid>
