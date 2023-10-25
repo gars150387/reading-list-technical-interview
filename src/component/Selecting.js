@@ -1,20 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Select } from 'antd';
-const Selecting = ({options}) => (
-  console.log('options', options),
-  <Select
-    showSearch
-    style={{
-      width: 200,
-    }}
-    placeholder="Search gender"
+const Selecting = ({ options, handleChange }) => {
+  return (
+    <Select
+      showSearch
+      style={{
+        width: 200,
+      }}
+      onChange={handleChange}
+      placeholder="Search gender"
+      options={options.map(option => {
+        return {
+          label: option,
+          value: option
+        }
+      })}
+    />
 
-    options={options.map(option => {
-      return {
-        label:option,
-        value:option
-      }
-    })}
-  />
-);
+  )
+
+
+};
 export default Selecting;

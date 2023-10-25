@@ -1,14 +1,20 @@
 import React from 'react';
 import { Slider } from 'antd';
-const onChange = (value) => {
-  console.log('onChange: ', value);
+
+const SliderFormat = ({ substractPages, onChange }) => {
+  const turnStringToNumberValue = () => {
+    const ref = substractPages
+    let copy = []
+    for (let i = 0; i < ref.length; i++) {
+      copy = [...copy, Number(ref[i])]
+    }
+    return copy
+  }
+ 
+  return (
+    <>
+      <Slider min={turnStringToNumberValue()[0]} max={turnStringToNumberValue().at(-1)} onChange={onChange} />
+    </>
+  )
 };
-const onAfterChange = (value) => {
-  console.log('onAfterChange: ', value);
-};
-const SliderFormat = () => (
-  <>
-    <Slider defaultValue={0} onChange={onChange} onAfterChange={onAfterChange} />
-  </>
-);
 export default SliderFormat;
