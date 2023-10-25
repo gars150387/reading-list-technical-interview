@@ -59,7 +59,11 @@ export default function App() {
 
   const handleCardSelected = (props) => {
     if (props) {
-      if (!selectedBooks[props.title]) {
+      if (selectedBooks.length < 1) {
+        setSelectedBooks([...selectedBooks, {
+          ...props
+        }])
+      } else if(!selectedBooks.some(element => element.title === props.title )){
         setSelectedBooks([...selectedBooks, {
           ...props
         }])
