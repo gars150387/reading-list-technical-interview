@@ -63,7 +63,7 @@ export default function App() {
         setSelectedBooks([...selectedBooks, {
           ...props
         }])
-      } else if(!selectedBooks.some(element => element.title === props.title )){
+      } else if (!selectedBooks.some(element => element.title === props.title)) {
         setSelectedBooks([...selectedBooks, {
           ...props
         }])
@@ -78,8 +78,12 @@ export default function App() {
   return (
     <Grid container>
       <Grid display={'flex'} item xs={12} sm={12}>
-        <Grid display={'flex'} flexDirection={'column'} justifyContent={'space-around'} alignItems={'center'} xs={6} sm={6}>
-          <Grid item xs={12}>
+        <Grid display={'flex'} flexDirection={'column'} justifyContent={'space-around'}
+          alignItems={'center'}
+          border={'solid 1px'}
+          borderRadius={'12p'}
+          xs={6} sm={6}>
+          <Grid display={'flex'} alignItems={'center'} justifyContent={'space-between'} item xs={12} sm={12}>
             <Grid item xs={6}><SliderFormat onChange={onChange} substractPages={substractPages()} /></Grid>
             <Grid item xs={6}><Selecting handleChange={handleChange} options={substractGender()} /></Grid>
           </Grid>
@@ -88,7 +92,7 @@ export default function App() {
           })}
           </Grid>
         </Grid>
-        <Grid item xs={5} sm={5}>{selectedBooks.map((book) => {
+        <Grid display={'flex'} alignItems={'center'} justifyContent={'flex-start'} item xs={5} sm={5}>{selectedBooks.map((book) => {
           return <Space align="center" size={[16, 8]} wrap><CardSelected props={book} handleDeleteCard={handleDeleteCard} /> </Space>
         })}
         </Grid>
