@@ -1,7 +1,6 @@
 import React from 'react';
 import { Grid } from '@mui/material';
 const CardFormat = ({ props, handleCardSelected, selectedBooks }) => {
-    console.log(selectedBooks.some(element => element.title === props.title) )
     return (
         <Grid item xs={12} sm={12} md={4} lg={3}>
             <div

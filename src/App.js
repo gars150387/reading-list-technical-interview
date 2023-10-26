@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback,useState } from 'react';
 import { Grid } from '@mui/material';
 import './style.css';
 import booksData from './books.json';
@@ -8,11 +8,11 @@ import CardFormat from './component/CardFormat';
 import CardSelected from './component/CardSelected';
 import { Space } from 'antd';
 import { useLocalStorage } from './component/useLocalStorage';
+
 export default function App() {
-  const [gender, setGender] = useState("Todos")
-  const [pages, setPages] = useState(0)
-  const [selectedBooks, setSelectedBooks] = useState([])
-  const [listOfBooks, setListOfBooks] = useLocalStorage('books', '')
+  const [gender, setGender] = useLocalStorage("gender","Todos")
+  const [pages, setPages] = useLocalStorage("pages",0)
+  const [selectedBooks, setSelectedBooks] = useLocalStorage("selectedBooks",[])
   const handleChange = (value) => {
     return setGender(value)
   };
@@ -54,11 +54,13 @@ export default function App() {
         bookResult = [...bookResult, data.book]
       }
     }
-    setListOfBooks(bookResult)
     return bookResult
   }, [pages, gender])
-  //select book and place it on the side
 
+  renderBooksBaseOnParameters()
+
+
+  //select book and place it on the side
   const handleCardSelected = (props) => {
     if (props) {
       if (selectedBooks.length < 1) {
