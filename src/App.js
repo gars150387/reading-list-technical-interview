@@ -7,11 +7,12 @@ import Selecting from './component/Selecting';
 import CardFormat from './component/CardFormat';
 import CardSelected from './component/CardSelected';
 import { Space } from 'antd';
+import { useLocalStorage } from './component/useLocalStorage';
 export default function App() {
   const [gender, setGender] = useState("Todos")
   const [pages, setPages] = useState(0)
   const [selectedBooks, setSelectedBooks] = useState([])
-  console.log("selected", selectedBooks)
+  const [listOfBooks, setListOfBooks] = useLocalStorage('books', '')
   const handleChange = (value) => {
     return setGender(value)
   };
@@ -53,6 +54,7 @@ export default function App() {
         bookResult = [...bookResult, data.book]
       }
     }
+    setListOfBooks(bookResult)
     return bookResult
   }, [pages, gender])
   //select book and place it on the side
@@ -93,7 +95,7 @@ export default function App() {
           </Grid>
         </Grid>
         <Grid item xs={5} sm={5}>{selectedBooks.map((book) => {
-          return <Space align="center" size={[8,16]} wrap><CardSelected props={book} handleDeleteCard={handleDeleteCard} /> </Space>
+          return <Space align="center" size={[8, 16]} wrap><CardSelected props={book} handleDeleteCard={handleDeleteCard} /> </Space>
         })}
         </Grid>
       </Grid>
